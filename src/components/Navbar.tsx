@@ -4,10 +4,8 @@ const Navbar = () => {
   return (
     <div className="bg-gray-800 text-white p-4 flex items-center justify-between">
       <div className="flex space-x-4">
-        <Link to="/">
-          <button className="hover:underline">
+        <Link to="/" className="hover:underline">
           Home
-          </button>
         </Link>
         <div className="group relative inline-block text-left">
           <button className="hover:underline flex items-center">
@@ -26,24 +24,23 @@ const Navbar = () => {
             </svg>
           </button>
           <div className="opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 absolute z-10 bg-gray-700 text-white mt-2 p-2 rounded-md">
-            <button className="hover:underline">
+            <Link to="/trending" className="hover:underline">
               Trending
-            </button>
-            <button className="hover:underline">
+            </Link>
+            <Link to="/upcoming" className="hover:underline">
               Upcoming
-            </button>
+            </Link>
           </div>
         </div>
-        <button className="hover:underline">
+        <Link to="/genre" className="hover:underline">
           Genres
-        </button>
-        <Link to="/favs"><button className="hover:underline">
-          Favorites
-        </button>
         </Link>
-        <button className="hover:underline">
+        <Link to="/favs" className="hover:underline">
+          Favorites
+        </Link>
+        <Link to="/login" className="hover:underline">
           Login
-        </button>
+        </Link>
       </div>
       <h3 className="text-xl font-semibold">Welcome to MovieFlix!</h3>
     </div>
