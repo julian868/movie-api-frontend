@@ -3,7 +3,7 @@ import axios from 'axios';
 import './App.css';
 import MovieCard from './components/MovieCard';
 import MovieDetails from './components/MovieDetails';
-import Navbar from './components/Navbar';
+import Navbar from '../../components/Navbar';
 import WelcomePage from './components/WelcomePage';
 import { title } from 'process';
 
