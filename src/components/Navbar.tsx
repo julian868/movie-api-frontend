@@ -1,21 +1,14 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 
-interface NavbarProps {
-  showHome: () => void;
-  showTrending: () => void;
-  showUpcoming: () => void;
-  showGenres: () => void;
-  showFavorites: () => void;
-  showLogin: () => void;
-}
-
-const Navbar: React.FC<NavbarProps> = ({ showHome, showTrending, showUpcoming, showGenres, showFavorites, showLogin }) => {
+const Navbar = () => {
   return (
     <div className="bg-gray-800 text-white p-4 flex items-center justify-between">
       <div className="flex space-x-4">
-        <button className="hover:underline" onClick={showHome}>
+        <Link to="/">
+          <button className="hover:underline">
           Home
-        </button>
+          </button>
+        </Link>
         <div className="group relative inline-block text-left">
           <button className="hover:underline flex items-center">
             Lists
@@ -33,21 +26,22 @@ const Navbar: React.FC<NavbarProps> = ({ showHome, showTrending, showUpcoming, s
             </svg>
           </button>
           <div className="opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 absolute z-10 bg-gray-700 text-white mt-2 p-2 rounded-md">
-            <button className="hover:underline" onClick={showTrending}>
+            <button className="hover:underline">
               Trending
             </button>
-            <button className="hover:underline" onClick={showUpcoming}>
+            <button className="hover:underline">
               Upcoming
             </button>
           </div>
         </div>
-        <button className="hover:underline" onClick={showGenres}>
+        <button className="hover:underline">
           Genres
         </button>
-        <button className="hover:underline" onClick={showFavorites}>
+        <Link to="/favs"><button className="hover:underline">
           Favorites
         </button>
-        <button className="hover:underline" onClick={showLogin}>
+        </Link>
+        <button className="hover:underline">
           Login
         </button>
       </div>
