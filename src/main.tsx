@@ -9,7 +9,52 @@ import NotFound from "./pages/NotFound";
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Home />,
+    errorElement: <NotFound />,
+  },
+  {
+    path: "/top-rated",
+    element: <TopRated />,
+    errorElement: <NotFound />,
+  },
+  {
+    path: "/popular",
+    element: <Popular />,
+    errorElement: <NotFound />,
+  },
+  {
+    path: "/now-playing",
+    element: <Now-Playing />,
+    errorElement: <NotFound />,
+  },
+  {
+    path: "/upcoming",
     element: <Upcoming />,
+    errorElement: <NotFound />,
+  },
+  {
+    path: "/genre",
+    element: <Genre />,
+    errorElement: <NotFound />,
+  },
+  {
+    path: "/upcoming",
+    element: <Upcoming />,
+    errorElement: <NotFound />,
+  },
+  {
+    path: "/favs",
+    element: <Favs />,
+    errorElement: <NotFound />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+    errorElement: <NotFound />,
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
     errorElement: <NotFound />,
   },
 ]);
