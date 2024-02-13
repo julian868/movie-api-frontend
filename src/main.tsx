@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Upcoming from "./pages/Upcoming";
 import NotFound from "./pages/NotFound";
+import Login from "./components/Login";
 
 const router = createBrowserRouter([
   {
