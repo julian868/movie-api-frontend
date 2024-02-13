@@ -5,47 +5,55 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Upcoming from "./pages/Upcoming";
 import NotFound from "./pages/NotFound";
+import Layout from "./components/Layout";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <Layout />,
     errorElement: <NotFound />,
-  },
-  {
-    path: "/top-rated",
-    element: <TopRated />,
-    errorElement: <NotFound />,
-  },
-  {
-    path: "/popular",
-    element: <Popular />,
-    errorElement: <NotFound />,
-  },
-  {
-    path: "/now-playing",
-    element: <Now-Playing />,
-    errorElement: <NotFound />,
-  },
-  {
-    path: "/upcoming",
-    element: <Upcoming />,
-    errorElement: <NotFound />,
-  },
-  {
-    path: "/genre",
-    element: <Genre />,
-    errorElement: <NotFound />,
-  },
-  {
-    path: "/upcoming",
-    element: <Upcoming />,
-    errorElement: <NotFound />,
-  },
-  {
-    path: "/favs",
-    element: <Favs />,
-    errorElement: <NotFound />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+        errorElement: <NotFound />,
+      },
+      {
+        path: "/top-rated",
+        element: <TopRated />,
+        errorElement: <NotFound />,
+      },
+      {
+        path: "/popular",
+        element: <Popular />,
+        errorElement: <NotFound />,
+      },
+      {
+        path: "/now-playing",
+        element: <Now-Playing />,
+        errorElement: <NotFound />,
+      },
+      {
+        path: "/upcoming",
+        element: <Upcoming />,
+        errorElement: <NotFound />,
+      },
+      {
+        path: "/genre",
+        element: <Genre />,
+        errorElement: <NotFound />,
+      },
+      {
+        path: "/upcoming",
+        element: <Upcoming />,
+        errorElement: <NotFound />,
+      },
+      {
+        path: "/favs",
+        element: <Favs />,
+        errorElement: <NotFound />,
+      },
+    ],
   },
   {
     path: "/login",
