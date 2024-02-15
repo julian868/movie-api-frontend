@@ -14,6 +14,7 @@ import Genre from "./components/Genre";
 import Login from "./components/Login";
 import Popular from "./components/Popular";
 import Signup from "./components/Signup";
+import MovieDetails from "./pages/MovieDetails";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +62,11 @@ const router = createBrowserRouter([
         element: <Favs />,
         errorElement: <NotFound />,
       },
+      {
+        path: "/movie-details/:id",
+        element: <MovieDetails />,
+        errorElement: <NotFound />,
+      }
     ],
   },
   {

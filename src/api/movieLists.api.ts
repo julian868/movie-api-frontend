@@ -1,6 +1,13 @@
 import axios from "axios";
 import { Genre } from "./movieLists";
 
+export interface MovieCardDetails {
+  id: number;
+  title: string;
+  release_date: Date;
+  poster_path: string;
+  vote_average: number;
+}
 
 export class MovieList {
   static async getTopRated() {
@@ -78,10 +85,10 @@ export class MovieList {
 //It also returns the first page of search by genre. Genre works by querying valid genre string to get genre number,
 //then you can send another query with that genre number
 //Test:
-  MovieList.getTopRated()
+/*   MovieList.getTopRated()
   .then((text) => {
     console.log(text);
   })
   .catch((err) => {
     console.log(err);
-  }); 
+  });  */
