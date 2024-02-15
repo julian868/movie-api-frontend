@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { MovieList } from "../api/movieLists.api";
+import { MovieCardDetails, MovieList } from "../api/movieLists.api";
 import MovieCard from "../FrontendFiles/src/components/MovieCard";
 
 const TopRated = () => {
