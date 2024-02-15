@@ -62,6 +62,7 @@ body {
     cursor: pointer;
   }
   
+  
   /* Movie Grid Styles */
   .movie-grid {
     display: grid;
