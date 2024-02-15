@@ -30,7 +30,20 @@ export class MovieList {
         Authorization: `Bearer ${import.meta.env.VITE_AUTH_TOKEN}`,
       },
     });
-    return popular?.data.results.map((x: any) => x.id);
+    return popular?.data.results;
+    //return popular?.data.results.map((x: any) => x.id);
+  }
+  static async getTrending() {
+    const trending = await axios({
+      method: "get",
+      url: "https://api.themoviedb.org/3/trending/all/day",
+      responseType: "json",
+      headers: {
+        Authorization: `Bearer ${import.meta.env.VITE_AUTH_TOKEN}`,
+      },
+    });
+    return trending?.data.results;
+    //return popular?.data.results.map((x: any) => x.id);
   }
   static async getNowPlaying() {
     const nowPlaying = await axios({
@@ -52,7 +65,8 @@ export class MovieList {
         Authorization: `Bearer ${import.meta.env.VITE_AUTH_TOKEN}`,
       },
     });
-    return upcoming?.data.results.map((x: any) => x.id);
+    return upcoming?.data.results;
+    //return upcoming?.data.results.map((x: any) => x.id);
   }
 
   static async getMoivesByGenre(genre: Genre) {
