@@ -7,6 +7,12 @@ const Navbar = () => {
         <Link to="/" className="hover:underline">
           Home
         </Link>
+        <Link to="/popular" className="hover:underline">
+          Popular
+        </Link>
+        <Link to="/top-rated" className="hover:underline">
+          Top Rated
+        </Link>
         <div className="group relative inline-block text-left">
           <button className="hover:underline flex items-center">
             Lists

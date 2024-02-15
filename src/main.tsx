@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Upcoming from "./pages/Upcoming";
+import Upcoming from "./components/Upcoming";
 import NotFound from "./pages/NotFound";
 import Layout from "./components/Layout";
 import NowPlaying from "./components/NowPlaying";
@@ -14,66 +14,64 @@ import Genre from "./components/Genre";
 import Login from "./components/Login";
 import Popular from "./components/Popular";
 import Signup from "./components/Signup";
+import Trending from "./components/Trending";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
-    errorElement: <NotFound />,
     children: [
       {
         path: "/",
         element: <Home />,
-        errorElement: <NotFound />,
       },
       {
         path: "/top-rated",
         element: <TopRated />,
-        errorElement: <NotFound />,
       },
       {
         path: "/popular",
         element: <Popular />,
-        errorElement: <NotFound />,
+      },
+      {
+        path: "/trending",
+        element: <Trending />,
       },
       {
         path: "/now-playing",
         element: <NowPlaying />,
-        errorElement: <NotFound />,
       },
       {
         path: "/upcoming",
         element: <Upcoming />,
-        errorElement: <NotFound />,
       },
       {
         path: "/genre",
         element: <Genre />,
-        errorElement: <NotFound />,
-      },
-      {
-        path: "/upcoming",
-        element: <Upcoming />,
-        errorElement: <NotFound />,
       },
       {
         path: "/favs",
         element: <Favs />,
-        errorElement: <NotFound />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
+    // Add errorElement for the root route
+    errorElement: <NotFound />,
   },
   {
     path: "/login",
     element: <Login />,
-    errorElement: <NotFound />,
   },
   {
     path: "/signup",
     element: <Signup />,
-    errorElement: <NotFound />,
   },
 ]);
+
+
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
