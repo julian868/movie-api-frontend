@@ -6,6 +6,14 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Upcoming from "./pages/Upcoming";
 import NotFound from "./pages/NotFound";
 import Layout from "./components/Layout";
+import NowPlaying from "./components/NowPlaying";
+import Home from "./components/Home";
+import TopRated from "./components/TopRated";
+import Favs from "./components/Favs";
+import Genre from "./components/Genre";
+import Login from "./components/Login";
+import Popular from "./components/Popular";
+import Signup from "./components/Signup";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +38,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/now-playing",
-        element: <Now-Playing />,
+        element: <NowPlaying />,
         errorElement: <NotFound />,
       },
       {

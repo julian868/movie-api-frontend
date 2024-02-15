@@ -4,7 +4,7 @@ import React from 'react';
 interface MovieCardProps {
   title: string;
   poster_path: string;
-  release_date: string;
+  release_date: Date;
   onFavoriteClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
   onClick: () => void;
   isFavorite: boolean;
@@ -20,11 +20,14 @@ const MovieCard: React.FC<MovieCardProps> = ({ title, poster_path, release_date,
     <div className="movieContainer" onClick={onClick}>
       <h1>{title}</h1>
       {poster_path && (
-        <img src={`https://image.tmdb.org/t/p/w200${poster_path}`} alt={`${title} Poster`} />
+        <img
+          src={`https://image.tmdb.org/t/p/w200${poster_path}`}
+          alt={`${title} Poster`}
+        />
       )}
-      <p>{release_date}</p>
+      <p>{release_date.toString()}</p>
       <button onClick={handleFavoriteClick}>
-        {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
+        {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
       </button>
     </div>
   );
