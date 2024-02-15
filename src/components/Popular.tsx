@@ -22,11 +22,13 @@ const Popular = () => {
         {popularData.map((movie) => (
           <div key={movie.id} className="bg-white p-4 rounded-lg shadow-md">
             <MovieCard
+              id={movie.id}
               title={movie.title}
               poster_path={movie.poster_path}
               release_date={movie.release_date}
-              onFavoriteClick={(event) => console.log('Favorite clicked', event)}
-              onClick={() => console.log('Card clicked')}
+              onFavoriteClick={(event) =>
+                console.log("Favorite clicked", event)
+              }
               isFavorite={false}
             />
           </div>

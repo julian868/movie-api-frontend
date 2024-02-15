@@ -1,6 +1,6 @@
 // MovieCard.tsx
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 interface MovieCardProps {
   id: number;
@@ -22,7 +22,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
 }) => {
   return (
     <div className="movieContainer">
-      <Link to={`/movie/${id}`}>
+      <Link to={`/movie-details/${id}`}>
         <h1>{title}</h1>
         {poster_path && (
           <img
@@ -33,7 +33,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
         <p>{release_date.toString()}</p>
       </Link>
       <button onClick={onFavoriteClick}>
-        {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
+        {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
       </button>
     </div>
   );
