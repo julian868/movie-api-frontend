@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { MovieList } from "../api/movieLists.api";
 import MovieCard from "../FrontendFiles/src/components/MovieCard";
-
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const TopRated = () => {
   const [topRatedData, setTopRatedData] = useState<MovieCardDetails[]>([]);
+  const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const loadTopRatedData = async () => {
       try {
-        setTopRatedData(await MovieList.getTopRated());
+        setTopRatedData(await MovieList.getTopRatedDetail(id));
       } catch (err) {
         console.log(err);
       }
@@ -30,9 +33,7 @@ const TopRated = () => {
           ): void {
             throw new Error("Function not implemented.");
           }}
-          onClick={function (): void {
-            throw new Error("Function not implemented.");
-          }}
+          onClick={navigate(`top-rated/${movie.id}`)}
           isFavorite={false}
         />
       ))}
