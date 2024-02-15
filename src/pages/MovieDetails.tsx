@@ -38,8 +38,19 @@ const MovieDetails = () => {
       </ul>
       <ul>
         <label>Trailers</label>
-              <li>
-                  {movieData.youtubeTrailers?.map((trailer)=>{return `https://www.youtube.com/watch?v=${trailer.key}`;})}
+        <li>
+          {movieData.youtubeTrailers?.map((trailer) => {
+            return (
+              <iframe
+                id="ytplayer"
+                width="720"
+                height="405"
+                src={`https://www.youtube.com/embed/${trailer.key}`}
+                frameBorder="0"
+                allowFullScreen
+              ></iframe>
+            );
+          })}
         </li>
       </ul>
     </div>
