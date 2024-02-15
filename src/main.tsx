@@ -15,6 +15,7 @@ import Login from "./components/Login";
 import Popular from "./components/Popular";
 import Signup from "./components/Signup";
 import Trending from "./components/Trending";
+import MovieDetails from "./pages/MovieDetails";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,11 @@ const router = createBrowserRouter([
         path: "*",
         element: <NotFound />,
       },
+      {
+        path: "/movie-details/:id",
+        element: <MovieDetails />,
+        errorElement: <NotFound />,
+      }
     ],
     // Add errorElement for the root route
     errorElement: <NotFound />,

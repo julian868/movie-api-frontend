@@ -1,5 +1,43 @@
 import axios from "axios";
 
+export interface MovieDataDetails {
+  id: number;
+  title: string;
+  releaseDate: Date;
+  youtubeTrailers: [
+    {
+      iso_639_1: string;
+      iso_3166_1: string;
+      name: string;
+      key: string;
+      site: string;
+      size: number;
+      type: string;
+      official: boolean;
+      published_at: string;
+      id: string;
+    }
+  ];
+  watchProviders: [];
+  cast: [
+    {
+      adult: boolean;
+      gender: number;
+      id: number;
+      known_for_department: string;
+      name: string;
+      original_name: string;
+      popularity: number;
+      profile_path: string;
+      cast_id: number;
+      character: string;
+      credit_id: string;
+      order: number;
+    }
+  ];
+  posterPath: string;
+  overview: string;
+}
 
 export class MovieData {
   static async getMovieData(movieId: Number) {
@@ -12,19 +50,24 @@ export class MovieData {
       },
     });
 
-    let youtubeTrailers = fullMovieData.data.videos.results.filter((x:any)=>{return (x.site=="YouTube"&&x.type=="Trailer")});
-    let watchProviders = fullMovieData.data["watch/providers"].results.CA?.flatrate;
-    let cast = fullMovieData.data.credits.cast.filter((x:any) => {
-      return (x.known_for_department == "Acting"&&x.order<5);
-    }); //write code to limit results to ~ 10
-      
+    let youtubeTrailers = fullMovieData.data.videos.results.filter((x: any) => {
+      return x.site == "YouTube" && x.type == "Trailer";
+    });
+    let watchProviders =
+      fullMovieData.data["watch/providers"].results.CA?.flatrate;
+    let cast = fullMovieData.data.credits.cast.filter((x: any) => {
+      return x.known_for_department == "Acting" && x.order < 5;
+    });
+
     let movieData = {
-      id:fullMovieData.data.id,
+      id: fullMovieData.data.id,
       title: fullMovieData.data.title,
       releaseDate: fullMovieData.data.release_date,
-      trailerIds: youtubeTrailers,
-        watchProviders: watchProviders,
-      cast:cast
+      youtubeTrailers: youtubeTrailers,
+      watchProviders: watchProviders,
+      cast: cast,
+      posterPath: fullMovieData.data.poster_path,
+      overview: fullMovieData.data.overview,
     };
     return movieData;
   }
@@ -38,4 +81,3 @@ export class MovieData {
    .catch((err) => {
      console.log(err);
    });  */
- 
