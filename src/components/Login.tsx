@@ -1,28 +1,72 @@
-import { useEffect, useState } from "react";
+import React from "react";
+import { Formik, Field, ErrorMessage, Form } from "formik";
+import * as Yup from "yup";
+import axios from "axios"; // Import Axios 
 
-//props
+const LoginSchema = Yup.object().shape({
+  email: Yup.string().email("Invalid email").required("Required"),
+  password: Yup.string()
+    .min(8, "Password is too short - should be  8 chars minimum.")
+    .required("Required"),
+});
+
 const Login = () => {
-    const [email, setEmail] = useState('');
-    const [pass, setPass] = useState('');
+  const handleSubmit = async (values) => {
+    try {
+      // Call your API endpoint here
+      const response = await axios.post("your_api_endpoint_here", values);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(email);
+      // Handle success response
+      console.log("Response:", response.data);
+
+      // Optionally, you can redirect the user or perform other actions
+    } catch (error) {
+      // Handle error
+      console.error("Login Error:", error);
     }
+  };
 
-    return (
-        <div className="auth-form-container">
-            <h2>Login</h2>
-            <form className="login-form" onSubmit={handleSubmit}>
-                <label htmlFor="email">Email</label>
-                <input value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="youremail@gmail.com" id="email" name="email" />
-                <label htmlFor="password">Password</label>
-                <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" name="password" />
-                <button type="submit">Log In</button>
-                <button type="submit">Sign in with Google</button>
-            </form>
-            <button className="link-btn" onClick={() => props.onFormSwitch('Signup')}>Don't have an account? Register here.</button>
-        </div>
-    )
+  return (
+    <div className="auth-form-container">
+      <h2>Login</h2>
+
+      <Formik
+        initialValues={{
+          email: "",
+          password: "",
+        }}
+        validationSchema={LoginSchema}
+        onSubmit={handleSubmit} // Pass the handleSubmit function
+       /*
+        onSubmit={(values) => {
+          console.log(values);
+        }}*/ //handleSubmit
+      >
+        {({  }) => (
+          <Form className="login-form" onSubmit={handleSubmit}>
+            <label htmlFor="email">Email</label>
+            <Field
+              id="email"
+              name="email"
+              type="email"
+              placeholder="youremail@gmail.com"
+            />
+            <ErrorMessage name="email" component="div" />
+            <label htmlFor="password">Password</label>
+            <Field
+              id="password"
+              name="password"
+              type="password"
+              placeholder="********"
+            />
+            <ErrorMessage name="password" component="div" />
+            <button type="submit">Log In</button>
+            <p>Don't have an account? <a href="/signup">Register</a></p>
+          </Form>
+        )}
+      </Formik>
+    </div>
+  );
 };
+
 export default Login;
