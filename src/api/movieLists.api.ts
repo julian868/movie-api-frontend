@@ -1,6 +1,13 @@
 import axios from "axios";
 import { Genre } from "./movieLists";
 
+export interface MovieCardDetails {
+  id: number;
+  title: string;
+  release_date: Date;
+  poster_path: string;
+  vote_average: number;
+}
 
 export class MovieList {
   static async getTopRated() {
@@ -23,7 +30,20 @@ export class MovieList {
         Authorization: `Bearer ${import.meta.env.VITE_AUTH_TOKEN}`,
       },
     });
-    return popular?.data.results.map((x: any) => x.id);
+    return popular?.data.results;
+    //return popular?.data.results.map((x: any) => x.id);
+  }
+  static async getTrending() {
+    const trending = await axios({
+      method: "get",
+      url: "https://api.themoviedb.org/3/trending/all/day",
+      responseType: "json",
+      headers: {
+        Authorization: `Bearer ${import.meta.env.VITE_AUTH_TOKEN}`,
+      },
+    });
+    return trending?.data.results;
+    //return popular?.data.results.map((x: any) => x.id);
   }
   static async getNowPlaying() {
     const nowPlaying = await axios({
@@ -45,7 +65,8 @@ export class MovieList {
         Authorization: `Bearer ${import.meta.env.VITE_AUTH_TOKEN}`,
       },
     });
-    return upcoming?.data.results.map((x: any) => x.id);
+    return upcoming?.data.results;
+    //return upcoming?.data.results.map((x: any) => x.id);
   }
 
   static async getMoivesByGenre(genre: Genre) {
@@ -78,10 +99,10 @@ export class MovieList {
 //It also returns the first page of search by genre. Genre works by querying valid genre string to get genre number,
 //then you can send another query with that genre number
 //Test:
-  MovieList.getTopRated()
+/*   MovieList.getTopRated()
   .then((text) => {
     console.log(text);
   })
   .catch((err) => {
     console.log(err);
-  }); 
+  });  */

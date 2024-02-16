@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { MovieList } from "../api/movieLists.api";
+import { MovieCardDetails, MovieList } from "../api/movieLists.api";
 import MovieCard from "../FrontendFiles/src/components/MovieCard";
 
 const TopRated = () => {
@@ -10,32 +10,30 @@ const TopRated = () => {
       try {
         setTopRatedData(await MovieList.getTopRated());
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
     };
     loadTopRatedData();
-    //console.log(topRatedData);
   }, []);
 
   return (
-    <div>
-      {topRatedData.map((movie) => (
-        <MovieCard
-          key={movie.id}
-          title={movie.title}
-          poster_path={movie.poster_path}
-          release_date={movie.release_date}
-          onFavoriteClick={function (
-            event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-          ): void {
-            throw new Error("Function not implemented.");
-          }}
-          onClick={function (): void {
-            throw new Error("Function not implemented.");
-          }}
-          isFavorite={false}
-        />
-      ))}
+    <div className="container mx-auto p-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {topRatedData.map((movie) => (
+          <div key={movie.id} className="bg-white p-4 rounded-lg shadow-md">
+            <MovieCard
+              id={movie.id}
+              title={movie.title}
+              poster_path={movie.poster_path}
+              release_date={movie.release_date}
+              onFavoriteClick={(event) =>
+                console.log("Favorite clicked", event)
+              }
+              isFavorite={false}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
