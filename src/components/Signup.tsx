@@ -15,12 +15,13 @@ const SignupSchema = Yup.object().shape({
 
 const Signup = () => {
   const handleSubmit = async (values) => {
-    const { email, password } = values;
+    const { email, password, confirmPassword } = values;
     try {
       // Call your API endpoint here to save data to MongoDB
-      const response = await axios.post("http://localhost:8080/api/v1/users", {
+      const response = await axios.post("/api/v1/signup", {
         email,
         password,
+        confirmPassword
       });
 
       // Handle success response

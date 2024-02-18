@@ -14,7 +14,7 @@ const Login = () => {
   const handleSubmit = async (values) => {
     try {
       // Call your API endpoint here
-      const response = await axios.post("http://localhost:8080/api/v1/users", values);
+      const response = await axios.post("/api/v1/login", values);
 
       // Handle success response
       console.log("Response:", response.data);
