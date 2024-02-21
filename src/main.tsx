@@ -16,6 +16,7 @@ import Popular from "./components/Popular";
 import Signup from "./components/Signup";
 import Trending from "./components/Trending";
 import MovieDetails from "./pages/MovieDetails";
+import GenrePage from "./components/Genre";
 
 const router = createBrowserRouter([
   {
@@ -47,8 +48,8 @@ const router = createBrowserRouter([
         element: <Upcoming />,
       },
       {
-        path: "/genre",
-        element: <Genre />,
+        path: "/genre/:genre",
+        element: <GenrePage />,
       },
       {
         path: "/favs",

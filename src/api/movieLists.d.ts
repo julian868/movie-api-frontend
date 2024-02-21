@@ -1,4 +1,4 @@
-const genres = [
+export const genres = [
   "Action",
   "Adventure",
   "Animation",
