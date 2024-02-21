@@ -57,7 +57,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
           />
         )}
       </Link>
-      <p className="text-sm text-gray-500 mb-2">{release_date.toString()}</p>
+      <p className="text-sm text-gray-500 mb-2 text-center">{release_date.toString()}</p>
     </div>
   );
 };
