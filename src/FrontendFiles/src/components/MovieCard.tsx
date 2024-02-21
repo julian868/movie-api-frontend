@@ -1,10 +1,10 @@
 // MovieCard.tsx
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import StarFilled from "../../../components/Icons/StarFilled";
 import StarEmpty from "../../../components/Icons/StarEmpty";
 
-interface MovieCardProps {
+export interface MovieCardProps {
   id: number;
   title: string;
   poster_path: string;
@@ -13,6 +13,7 @@ interface MovieCardProps {
   // vote_average: number;
   // vote_count: number;
   onFavoriteClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   isFavorite: boolean;
 }
 

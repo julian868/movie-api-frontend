@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { MovieList } from "../api/movieLists.api";
+import { useEffect, useState } from "react";
+import { MovieCardDetails, MovieList } from "../api/movieLists.api";
 import MovieCard from "../FrontendFiles/src/components/MovieCard";
 
 const Upcoming = () => {
@@ -22,11 +22,11 @@ const Upcoming = () => {
         {upcomingData.map((movie) => (
           <div key={movie.id} className="bg-white p-4 rounded-lg shadow-md">
             <MovieCard
+              id={movie.id}
               title={movie.title}
               poster_path={movie.poster_path}
               release_date={movie.release_date}
               onFavoriteClick={(event) => console.log('Favorite clicked', event)}
-              onClick={() => console.log('Card clicked')}
               isFavorite={false}
             />
           </div>

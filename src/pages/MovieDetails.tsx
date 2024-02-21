@@ -3,7 +3,14 @@ import { useParams } from "react-router-dom";
 import { MovieData, MovieDataDetails } from "../api/movieData.api";
 import { useEffect, useState } from "react";
 
-const MovieDetails = () => {
+interface MovieDetailsProps {
+  title?: string;
+  poster_path?: string;
+  release_date?: Date;
+  overview?: string;
+}
+
+const MovieDetails: React.FC<MovieDetailsProps> = () => {
   const { id } = useParams<{ id: string }>();
   const [movieData, setMovieData] = useState<MovieDataDetails>(Object);
   

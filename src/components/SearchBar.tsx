@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useState} from 'react';
 import { MovieData, MovieDataDetails } from '../api/movieData.api';
+import { useNavigate } from 'react-router-dom'
 
 const SearchBar: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [searchResults, setSearchResults] = useState<MovieDataDetails[]>([]);
-  const history = useHistory();
+  const history = useNavigate();
 
   const handleMovieClick = (movieId: number) => {
-    history.push(`/movie/${movieId}`);
+    history(`/movie/${movieId}`);
     // Optionally, you can clear the search results and query when a movie is clicked
     setSearchQuery('');
     setSearchResults([]);

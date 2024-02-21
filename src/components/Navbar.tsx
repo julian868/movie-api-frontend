@@ -1,8 +1,13 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { genres } from "../api/movieLists.d";
 
-const Navbar = () => {
+interface NavbarProps {
+  goBack?: Function;
+  showFavorites?: Function;
+  showPopular?: Function;
+  showHome?: Function;
+}
+const Navbar:React.FC<NavbarProps> = () => {
   const genreList = genres;
   return (
     <div className="navbar bg-gray-800 text-white p-4 flex items-center justify-between">

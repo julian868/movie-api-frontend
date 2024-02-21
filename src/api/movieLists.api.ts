@@ -94,7 +94,7 @@ export class MovieList {
     return moviesByGenre.data.results;
   }
 
-  static async searchMovie(searchText:string) {
+/*   static async searchMovie(searchText:string) {
   const searchResults = await axios({
     method: "get",
     url: ``,
@@ -104,7 +104,7 @@ export class MovieList {
     }
   });
   return searchResults.data.results
-  }
+  } */
 }
 
 //This class returns id values for upcoming movies, top rated movies etc as an array of integers.

@@ -2,16 +2,15 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 import './App.css';
 import MovieCard from './components/MovieCard';
-import MovieDetails from '../../components/MovieDetails';
+import MovieDetails from '../../pages/MovieDetails';
 import Navbar from '../../components/Navbar';
 import WelcomePage from './components/WelcomePage';
-import { title } from 'process';
 
 interface Movies {
   id: number;
   title: string;
   poster_path: string;
-  release_date: string;
+  release_date: Date;
   overview: string;
 }
 
@@ -93,6 +92,7 @@ function App() {
         <div className="movies-container">
           {movies.map((movie) => (
             <MovieCard
+              id={movie.id}
               key={movie.id}
               title={movie.title}
               poster_path={movie.poster_path}
@@ -118,6 +118,7 @@ function App() {
             .filter((movie) => favorites.includes(movie.id))
             .map((favoriteMovie) => (
               <MovieCard
+                id={favoriteMovie.id}
                 key={favoriteMovie.id}
                 title={favoriteMovie.title}
                 poster_path={favoriteMovie.poster_path}

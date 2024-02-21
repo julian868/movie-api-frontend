@@ -37,10 +37,12 @@ export interface MovieDataDetails {
   ];
   posterPath: string;
   overview: string;
+  popularity: number;
+  vote_average: number;
 }
 
 export class MovieData {
-  static async getMovieData(movieId: Number) {
+  static async getMovieData(movieId: number) {
     let fullMovieData = await axios({
       method: "get",
       url: `https://api.themoviedb.org/3/movie/${movieId}?append_to_response=videos%2Cwatch%2Fproviders%2Ccredits&language=en-US`,
@@ -68,20 +70,26 @@ export class MovieData {
       cast: cast,
       posterPath: fullMovieData.data.poster_path,
       overview: fullMovieData.data.overview,
+      popularity: fullMovieData.data.popularity,
+      vote_average: fullMovieData.data.vote_average,
     };
     return movieData;
   }
-  static async searchMovies(query: string): Promise<{ results: MovieDataDetails[] }> {
-    const response = await axios.get(`${BASE_URL}/search/movie`, {
-      params: {
-        api_key: API_KEY,
-        query,
-      },
-    });
+  static async searchMovies(
+    query: string
+  ): Promise<{ results: MovieDataDetails[] }> {
+    const response = await axios.get(
+      `https://api.themoviedb.org/search/movie`,
+      {
+        params: {
+          api_key: process.env.VITE_AUTH_TOKEN,
+          query,
+        },
+      }
+    );
     return response.data;
   }
 }
-
 
 //test
 /*   MovieData.getMovieData(66379)

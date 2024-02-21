@@ -1,4 +1,3 @@
-import React from "react";
 import { Formik, Field, ErrorMessage, Form } from "formik";
 import * as Yup from "yup";
 import axios from "axios"; // Import Axios or any other HTTP client library
@@ -9,12 +8,12 @@ const SignupSchema = Yup.object().shape({
     .min(8, "Password is too short - should be 8 chars minimum.")
     .required("Required"),
   confirmPassword: Yup.string()
-    .oneOf([Yup.ref("password"), null], "Passwords must match")
+    .oneOf([Yup.ref("password")], "Passwords must match")
     .required("Required"),
 });
 
 const Signup = () => {
-  const handleSubmit = async (values) => {
+  const handleSubmit = async (values:any) => {
     const { email, password, confirmPassword } = values;
     try {
       // Call your API endpoint here to save data to MongoDB
