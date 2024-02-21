@@ -71,7 +71,17 @@ export class MovieData {
     };
     return movieData;
   }
+  static async searchMovies(query: string): Promise<{ results: MovieDataDetails[] }> {
+    const response = await axios.get(`${BASE_URL}/search/movie`, {
+      params: {
+        api_key: API_KEY,
+        query,
+      },
+    });
+    return response.data;
+  }
 }
+
 
 //test
 /*   MovieData.getMovieData(66379)

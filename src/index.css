@@ -4,15 +4,17 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+
+  font-family: 'Arial', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #1a202c; /* Dark background color */
+  color: #cbd5e0; /* Light text color */
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+
     monospace;
 }
 
@@ -74,6 +76,13 @@ code {
   padding: 1rem;
   border-radius: 8px;
   overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+
 }
 
 .movie-card img {
@@ -81,4 +90,64 @@ code {
   height: auto;
   border-radius: 4px;
   margin-bottom: 0.5rem;
+}
+
+.movieDetailsContainer {
+  max-width: 100%; /* Adjust container width */
+  margin: auto;
+  padding: 20px;
+}
+
+.movieContainer h1 {
+  font-size: 1.2rem; /* Heading font size */
+  margin-bottom: 10px;
+  text-align: center; /* Center align the heading */
+  color: #1a202c;
+}
+
+.movieDetailsContainer h1 {
+  font-size: 4rem;        /* Adjust the font size */
+  margin-bottom: 0px;
+  padding: 2%;
+  text-align: center;     /* Center-align the text */
+  text-transform: uppercase;
+  white-space: nowrap;    /* Prevent text from wrapping */
+  overflow: hidden;       /* Hide any overflowing text */
+  text-overflow: ellipsis;
+}
+
+img {
+  max-width: 100%; /* Make images responsive */
+  height: auto;
+  border-radius: 8px; /* Add border radius to images */
+  margin-bottom: 15px;
+}
+
+p {
+  font-size: 1rem; /* Paragraph font size */
+  margin-bottom: 15px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+label {
+  font-size: 1.2rem; /* Label font size */
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+li {
+  font-size: 1rem; /* List item font size */
+  margin-bottom: 10px;
+}
+
+iframe {
+  width: 98%;
+  height: 800px; /* Set the iframe height */
+  border: none;
+  border-radius: 8px; /* Add border radius to iframes */
 }
