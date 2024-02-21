@@ -91,7 +91,19 @@ export class MovieList {
         Authorization: `Bearer ${import.meta.env.VITE_AUTH_TOKEN}`,
       },
     });
-    return moviesByGenre.data.results.map((x: any) => x.id);;
+    return moviesByGenre.data.results;
+  }
+
+  static async searchMovie(searchText:string) {
+  const searchResults = await axios({
+    method: "get",
+    url: ``,
+    responseType: "json",
+    headers: {
+      Authorization: `Bearer ${import.meta.env.VITE_AUTH_TOKEN}`,
+    }
+  });
+  return searchResults.data.results
   }
 }
 
