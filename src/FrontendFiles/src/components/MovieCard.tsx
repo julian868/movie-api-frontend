@@ -7,6 +7,9 @@ interface MovieCardProps {
   title: string;
   poster_path: string;
   release_date: Date;
+  // popularity: number;
+  // vote_average: number;
+  // vote_count: number;
   onFavoriteClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
   isFavorite: boolean;
 }
@@ -16,6 +19,9 @@ const MovieCard: React.FC<MovieCardProps> = ({
   title,
   poster_path,
   release_date,
+  // popularity,
+  // vote_average,
+  // vote_count,
   onFavoriteClick,
   isFavorite,
 }) => {
