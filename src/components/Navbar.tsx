@@ -7,9 +7,9 @@ const Navbar = () => {
   return (
     <div className="navbar bg-gray-800 text-white p-4 flex items-center justify-between">
       <div className="flex space-x-4">
-        <Link to="/" className="hover:underline">
+        {/* <Link to="/" className="hover:underline">
           Home
-        </Link>
+        </Link> */}
         <Link to="/popular" className="hover:underline">
           Popular
         </Link>

@@ -1,7 +1,8 @@
 import React from "react";
+import Navbar from "./Navbar";
 import { Formik, Field, ErrorMessage, Form } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
+import axios from "axios"; 
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Email is required"),
@@ -21,54 +22,54 @@ const Login = () => {
   };
 
   return (
-    <div className="auth-form-container">
-      <h2 className="text-3xl font-bold mb-4">Login</h2>
+    <div>
+      <Navbar />
+      <div className="auth-form-container">
+        <h2 className="text-2xl font-semibold mb-4">Login</h2>
+        <Formik
+          initialValues={{
+            email: "",
+            password: "",
+          }}
+          validationSchema={LoginSchema}
+          onSubmit={handleSubmit}
+        >
+          {() => (
+            <Form className="flex flex-col space-y-4">
+              <div>
+                <label htmlFor="email" className="block font-medium">
+                  Email
+                </label>
+                <Field
+                  id="email"
+                  name="email"
+                  type="email"
+                  className="input-field"
+                  placeholder="youremail@gmail.com"
+                />
+                <ErrorMessage name="email" component="div" className="text-red-500" />
+              </div>
 
-      <Formik
-        initialValues={{
-          email: "",
-          password: "",
-        }}
-        validationSchema={LoginSchema}
-        onSubmit={handleSubmit}
-      >
-        {() => (
-          <Form className="login-form flex flex-col">
-            <div className="mb-4">
-              <label htmlFor="email" className="block text-sm font-semibold mb-2">
-                Email
-              </label>
-              <Field
-                id="email"
-                name="email"
-                type="email"
-                placeholder="youremail@gmail.com"
-                className="input-field"
-              />
-              <ErrorMessage name="email" component="div" className="text-red-500 text-sm" />
-            </div>
-            <div className="mb-6">
-              <label htmlFor="password" className="block text-sm font-semibold mb-2">
-                Password
-              </label>
-              <Field
-                id="password"
-                name="password"
-                type="password"
-                placeholder="********"
-                className="input-field"
-              />
-              <ErrorMessage name="password" component="div" className="text-red-500 text-sm" />
-            </div>
-            <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-              Log In
-            </button>
-            <p className="text-gray-600 text-sm mt-4">
-              Don't have an account? <a href="/signup" className="text-blue-500">Register</a>
-            </p>
-          </Form>
-        )}
-      </Formik>
+              <div>
+                <label htmlFor="password" className="block font-medium">
+                  Password
+                </label>
+                <Field
+                  id="password"
+                  name="password"
+                  type="password"
+                  className="input-field"
+                  placeholder="********"
+                />
+                <ErrorMessage name="password" component="div" className="text-red-500" />
+              </div>
+
+              <button type="submit" className="btn-primary">Log In</button>
+              <p className="text-gray-500 text-sm">Don't have an account? <a href="/signup" className="text-blue-500">Register</a></p>
+            </Form>
+          )}
+        </Formik>
+      </div>
     </div>
   );
 };
